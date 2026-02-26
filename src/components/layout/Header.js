@@ -105,7 +105,10 @@ export default function Header() {
       <div className={`transition-all duration-500 ${scrolled ? 'h-16' : 'h-24'}`}></div>
 
       {/* Information Ribbon underneath header */}
-      <div className="hidden md:flex bg-amber-800 text-yellow-100 py-1.5 w-full justify-center items-center space-x-6 text-sm font-body tracking-wider uppercase drop-shadow-md z-40 relative">
+      <div 
+        className="hidden md:flex text-yellow-100 py-1.5 w-full justify-center items-center space-x-6 text-sm font-body tracking-wider uppercase drop-shadow-md z-40 relative"
+        style={{ backgroundColor: 'hsl(120deg 100% 19.61%)' }}
+      >
         <span className="flex items-center"><FaHeart className="text-orange-500 mr-2" /> Fresh Ingredients</span>
         <span className="text-orange-400 font-black">•</span>
         <span className="flex items-center"><FaHeart className="text-orange-500 mr-2" /> Made to Order</span>
