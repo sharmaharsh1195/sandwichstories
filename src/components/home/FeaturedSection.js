@@ -7,38 +7,38 @@ export default function FeaturedSection() {
   const items = [
     {
       id: 1,
-      name: 'The Hero Club',
-      story: 'Born in 1995, saved lunch breaks across Mumbai!',
-      speech: '"I\'m triple-stacked and proud!"',
-      image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80',
+      name: 'The Melting Legend',
+      story: "A gooey, cheesy masterpiece that's been a fan favorite since day one.",
+      speech: '"I\'m literally melting for you!"',
+      image: '/melting%20toast.jpg',
       color: 'bg-primary-yellow',
       rotate: -3
     },
     {
       id: 2,
-      name: 'Paneer Rebel',
-      story: 'Street spices meet grilled perfection. A love story.',
-      speech: '"Desi at heart, fancy on plate!"',
-      image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=600&q=80',
-      color: 'bg-accent-green',
+      name: 'The Spicy Italian',
+      story: 'Fusion at its finest. Desi paneer meets thin-crust Italian goodness.',
+      speech: '"Spicy, saucy, and absolutely iconic."',
+      image: '/chilli%20paneer%20pizza.jpg',
+      color: 'bg-accent-red',
       rotate: 2
     },
     {
       id: 3,
-      name: 'Bombay Hustler',
-      story: 'Started as street food, now a legend.',
-      speech: '"Cheese burst? Obviously!"',
-      image: 'https://images.unsplash.com/photo-1621852004158-f3bc188ace2d?w=600&q=80',
+      name: 'The Grill Master',
+      story: 'Perfectly toasted with our secret herb butter and fresh veggies.',
+      speech: '"I\'ve got those perfect grill marks!"',
+      image: '/grill%20sandwich.jpg',
       color: 'bg-primary-orange',
       rotate: -2
     },
     {
       id: 4,
-      name: 'Chicken Champion',
-      story: 'Juicy patty trained by flavor masters.',
-      speech: '"150g of pure joy!"',
-      image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&q=80',
-      color: 'bg-accent-red',
+      name: 'The Open Secret',
+      story: 'Loaded with premium cheese and toppings, served wide open for maximum flavor.',
+      speech: '"Too much cheese? No such thing."',
+      image: '/open%20cheese%20toast.jpg',
+      color: 'bg-accent-green',
       rotate: 3
     }
   ]
