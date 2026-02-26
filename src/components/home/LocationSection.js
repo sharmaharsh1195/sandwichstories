@@ -6,36 +6,25 @@ export default function LocationSection() {
   const locations = [
     {
       id: 1,
-      name: 'Andheri West',
-      address: 'Shop 12, Veera Desai Road, Andheri West',
-      hours: '11:00 AM - 10:00 PM',
+      name: 'Godadara, Surat',
+      address: 'SANDWICH SSTORIES, G8, SKY ELANZA, OPP. SKY VIEW HEIGHTS, BEHIND MIDAS SQUARE, GODADARA RD, SURAT, GUJARAT 395012',
+      hours: '11:00 AM - 11:00 PM',
       phone: '+91 98765 43210',
       mapUrl: '#',
-      image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80',
+      image: '/location-surat.jpeg',
       color: 'bg-primary-yellow',
       emoji: '🏪'
     },
     {
       id: 2,
-      name: 'Bandra West',
-      address: 'Hill Road, Near Joggers Park, Bandra',
-      hours: '10:00 AM - 11:00 PM',
+      name: 'Parvat Patiya, Surat',
+      address: 'J.K.NAGAR, VESU CANAL RD, NEAR SAI BABA MANDIR, OPPOSITE PARVAT PATIA BRTS, PARVAT PATIYA, SURAT, GUJARAT 395010',
+      hours: '11:00 AM - 11:00 PM',
       phone: '+91 98765 43211',
       mapUrl: '#',
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',
+      image: '/location-surat.jpeg',
       color: 'bg-accent-green',
       emoji: '🎯'
-    },
-    {
-      id: 3,
-      name: 'Powai',
-      address: 'Galleria Mall, Hiranandani, Powai',
-      hours: '11:00 AM - 10:30 PM',
-      phone: '+91 98765 43212',
-      mapUrl: '#',
-      image: 'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80',
-      color: 'bg-primary-orange',
-      emoji: '🗺️'
     }
   ]
 
@@ -63,7 +52,7 @@ export default function LocationSection() {
         </motion.div>
 
         {/* Location Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8 mb-12">
           {locations.map((location, index) => (
             <LocationCard key={location.id} location={location} index={index} />
           ))}
@@ -168,7 +157,11 @@ function LocationCard({ location, index }) {
           </div>
 
           {/* CTA Button */}
-          <button className={`w-full ${location.color} hover:bg-dark hover:text-white text-dark font-heading font-bold py-3 rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-md flex items-center justify-center gap-2 mt-4`}>
+          <button 
+            type="button" 
+            onClick={(e) => e.preventDefault()} 
+            className={`w-full ${location.color} hover:bg-dark hover:text-white text-dark font-heading font-bold py-3 rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-md flex items-center justify-center gap-2 mt-4`}
+          >
             <FaDirections />
             Get Directions
           </button>

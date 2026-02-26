@@ -11,7 +11,7 @@ export default function Footer() {
               Sandwich Stories
             </h3>
             <p className="font-body text-gray-300">
-              Crafting delicious sandwich stories since [Year]. Fresh ingredients, bold flavors!
+              Crafting delicious sandwich stories since 2008Fresh ingredients, bold flavors!
             </p>
           </div>
 
@@ -31,11 +31,11 @@ export default function Footer() {
             <ul className="space-y-3 font-body">
               <li className="flex items-center gap-2">
                 <FaPhone className="text-primary-yellow" />
-                <span>+91 XXXXX XXXXX</span>
+                <span>+91 98765 43210</span>
               </li>
-              <li className="flex items-center gap-2">
-                <FaMapMarkerAlt className="text-primary-yellow" />
-                <span>Mumbai, Maharashtra</span>
+              <li className="flex items-start gap-2">
+                <FaMapMarkerAlt className="text-primary-yellow mt-1 flex-shrink-0" />
+                <span className="text-sm">SANDWICH SSTORIES, G8, SKY ELANZA, OPP. SKY VIEW HEIGHTS, BEHIND MIDAS SQUARE, GODADARA RD, SURAT, GUJARAT 395012</span>
               </li>
             </ul>
             <div className="flex gap-4 mt-4">
