@@ -38,8 +38,8 @@ export default function Header() {
           <nav 
             className={`relative flex justify-between items-center transition-all duration-500 ease-in-out px-4 md:px-8 border-b border-white/20
               ${scrolled 
-                ? 'bg-white/70 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] py-3' 
-                : 'bg-white/40 backdrop-blur-sm py-5'
+                ? 'bg-white/70 backdrop-blur-md shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] py-2' 
+                : 'bg-white/40 backdrop-blur-sm py-4'
               }`}
           >
             {/* Logo */}
@@ -102,7 +102,7 @@ export default function Header() {
       </header>
 
       {/* Spacer to prevent content from hiding under the fixed header */}
-      <div className={`transition-all duration-500 ${scrolled ? 'h-20' : 'h-28'}`}></div>
+      <div className={`transition-all duration-500 ${scrolled ? 'h-16' : 'h-24'}`}></div>
 
       {/* Information Ribbon underneath header */}
       <div className="hidden md:flex bg-amber-800 text-yellow-100 py-1.5 w-full justify-center items-center space-x-6 text-sm font-body tracking-wider uppercase drop-shadow-md z-40 relative">

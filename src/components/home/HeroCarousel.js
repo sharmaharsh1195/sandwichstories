@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion'
 
 const slides = [
   {
@@ -13,6 +13,10 @@ const slides = [
     bg: 'from-amber-400 to-yellow-300',
     accent: '#f59e0b',
     particles: ['🧀', '🍞', '✨'],
+    doodles: [
+      { text: 'Extra Cheesy!', x: '70%', y: '20%', rotate: 15 },
+      { text: 'Best Seller 🏆', x: '10%', y: '70%', rotate: -10 },
+    ]
   },
   {
     id: 2,
@@ -24,6 +28,10 @@ const slides = [
     bg: 'from-red-500 to-orange-400',
     accent: '#ef4444',
     particles: ['🌶️', '🍕', '🔥'],
+    doodles: [
+      { text: 'Spicy Level: 🔥🔥🔥', x: '65%', y: '15%', rotate: 5 },
+      { text: 'Hand-tossed', x: '15%', y: '80%', rotate: -5 },
+    ]
   },
   {
     id: 3,
@@ -35,6 +43,10 @@ const slides = [
     bg: 'from-orange-500 to-amber-400',
     accent: '#f97316',
     particles: ['🥪', '🌿', '⚡'],
+    doodles: [
+      { text: 'Secret Herb Butter 🌿', x: '75%', y: '25%', rotate: 12 },
+      { text: 'Perfect Grill Marks', x: '10%', y: '65%', rotate: -8 },
+    ]
   },
   {
     id: 4,
@@ -46,6 +58,10 @@ const slides = [
     bg: 'from-yellow-500 to-amber-400',
     accent: '#eab308',
     particles: ['🧀', '😋', '💛'],
+    doodles: [
+      { text: 'Premium Cheese', x: '70%', y: '15%', rotate: 10 },
+      { text: 'Golden Crunch', x: '15%', y: '75%', rotate: -12 },
+    ]
   },
 ]
 
@@ -68,6 +84,21 @@ const imageVariants = {
     transition: { duration: 0.7, ease: 'easeOut', delay: 0.2 },
   },
   exit: { opacity: 0, scale: 0.9, y: -20, transition: { duration: 0.35 } },
+}
+
+const doodleVariants = {
+  hidden: { opacity: 0, scale: 0.5, rotate: -20 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    rotate: (r) => r || 0,
+    transition: { 
+      type: "spring",
+      stiffness: 260,
+      damping: 20,
+      delay: 0.8 
+    }
+  },
 }
 
 function FloatingParticle({ emoji, index }) {
@@ -98,16 +129,60 @@ function FloatingParticle({ emoji, index }) {
   )
 }
 
+function DoodleAnnotation({ doodle }) {
+  return (
+    <motion.div
+      variants={doodleVariants}
+      initial="hidden"
+      animate="visible"
+      className="absolute z-30 pointer-events-none bg-white/10 backdrop-blur-[2px] border border-white/20 px-3 py-1 rounded-lg shadow-sm"
+      style={{ left: doodle.x, top: doodle.y, rotate: doodle.rotate }}
+    >
+      <span className="font-handwriting text-white text-lg md:text-xl whitespace-nowrap drop-shadow-md">
+        {doodle.text}
+      </span>
+    </motion.div>
+  )
+}
+
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0)
   const [paused, setPaused] = useState(false)
+
+  // 3D Tilt Logic
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 })
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 })
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"])
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"])
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+    const mouseX = e.clientX - rect.left
+    const mouseY = e.clientY - rect.top
+    const xPct = mouseX / width - 0.5
+    const yPct = mouseY / height - 0.5
+    x.set(xPct)
+    y.set(yPct)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+    setPaused(false)
+  }
 
   const next = useCallback(() => setCurrent((c) => (c + 1) % slides.length), [])
   const prev = useCallback(() => setCurrent((c) => (c - 1 + slides.length) % slides.length), [])
 
   useEffect(() => {
     if (paused) return
-    const t = setInterval(next, 4500)
+    const t = setInterval(next, 5000)
     return () => clearInterval(t)
   }, [paused, next])
 
@@ -115,12 +190,13 @@ export default function HeroCarousel() {
 
   return (
     <div
-      className="relative overflow-hidden"
-      style={{ minHeight: '580px' }}
+      className="relative overflow-hidden cursor-default group/hero"
+      style={{ minHeight: '520px', perspective: '1000px' }}
+      onMouseMove={handleMouseMove}
       onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Animated gradient background */}
+      {/* Background Gradient */}
       <AnimatePresence mode="wait">
         <motion.div
           key={`bg-${slide.id}`}
@@ -157,12 +233,11 @@ export default function HeroCarousel() {
       </AnimatePresence>
 
       {/* Main Content */}
-      <div className="relative z-20 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 md:px-12 pt-12 pb-28 md:pb-32 min-h-[580px]">
+      <div className="relative z-20 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto px-6 md:px-12 pt-10 pb-20 md:pb-24 min-h-[520px]">
         {/* Text Side */}
         <div className="flex-1 text-white max-w-lg text-center md:text-left mb-8 md:mb-0">
           <AnimatePresence mode="wait">
             <motion.div key={`text-${slide.id}`}>
-              {/* Tag */}
               <motion.span
                 variants={textVariants}
                 custom={0}
@@ -174,7 +249,6 @@ export default function HeroCarousel() {
                 {slide.tag}
               </motion.span>
 
-              {/* Title */}
               <motion.h1
                 variants={textVariants}
                 custom={1}
@@ -186,7 +260,6 @@ export default function HeroCarousel() {
                 {slide.title}
               </motion.h1>
 
-              {/* Subtitle */}
               <motion.p
                 variants={textVariants}
                 custom={2}
@@ -198,7 +271,6 @@ export default function HeroCarousel() {
                 {slide.subtitle}
               </motion.p>
 
-              {/* CTA Button */}
               <motion.button
                 variants={textVariants}
                 custom={3}
@@ -226,18 +298,27 @@ export default function HeroCarousel() {
               animate="visible"
               exit="exit"
               className="relative"
+              style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
             >
+              {/* Doodles Overlay */}
+              <div className="absolute inset-0 pointer-events-none z-30">
+                {slide.doodles.map((doodle, i) => (
+                  <DoodleAnnotation key={i} doodle={doodle} />
+                ))}
+              </div>
+
               {/* Glow behind image */}
               <div
-                className="absolute -inset-6 rounded-full blur-3xl opacity-40"
-                style={{ background: slide.accent }}
+                className={`absolute -inset-6 rounded-full blur-3xl opacity-40`}
+                style={{ background: slide.accent, transform: 'translateZ(-50px)' }}
               />
               <motion.img
                 src={slide.image}
                 alt={slide.title}
-                className="relative z-10 w-[360px] md:w-[500px] lg:w-[600px] h-[300px] md:h-[420px] object-cover rounded-[2.5rem] shadow-2xl border-4 border-white/20"
+                className="relative z-10 w-[360px] md:w-[500px] lg:w-[600px] h-[280px] md:h-[380px] object-cover rounded-[2.5rem] shadow-2xl border-4 border-white/20"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+                style={{ transform: 'translateZ(50px)' }}
               />
             </motion.div>
           </AnimatePresence>
@@ -280,7 +361,7 @@ export default function HeroCarousel() {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           className="w-full"
-          style={{ display: 'block', height: '70px' }}
+          style={{ display: 'block', height: '50px' }}
         >
           <path
             d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1380,20 1440,40 L1440,80 L0,80 Z"
