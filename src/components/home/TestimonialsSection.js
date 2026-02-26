@@ -35,6 +35,14 @@ export default function TestimonialsSection() {
     },
     {
       id: 4,
+      name: 'Jayshree Gangadhare',
+      review: 'Best sandwiches, fresh and tasty 😋 my everyday go to place. We have tried their chilli cheese sandwich and garlic bread and cold coffee mixed with chocolate. All the items were cooked patiently… Nothing less nothing more… Absolute treat to tastebuds 😋',
+      rating: 5,
+      location: 'Pune',
+      color: 'bg-pink-100'
+    },
+    {
+      id: 5,
       name: 'Aamir Khan',
       review: 'Yesterday, I tried the chili cheese sandwich and masala Maggie, and both were fantastic! The flavors were perfectly balanced, and the sandwich had just the right amount of spice. I highly recommend them!',
       rating: 5,

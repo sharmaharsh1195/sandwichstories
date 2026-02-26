@@ -7,38 +7,38 @@ export default function FeaturedSection() {
   const items = [
     {
       id: 1,
-      name: 'The Melting Legend',
-      story: "A gooey, cheesy masterpiece that's been a fan favorite since day one.",
-      speech: '"I\'m literally melting for you!"',
-      image: '/melting%20toast.jpg',
+      name: 'Aloo Masala Cheese Toast',
+      story: 'Crispy toast loaded with spiced potato & molten cheese — a comfort classic reimagined.',
+      speech: '"Desi soul, cheesy heart!"',
+      image: '/featuredSection/aloo%20masala%20cheese%20toast.jpg',
       color: 'bg-primary-yellow',
       rotate: -3
     },
     {
       id: 2,
-      name: 'The Spicy Italian',
-      story: 'Fusion at its finest. Desi paneer meets thin-crust Italian goodness.',
-      speech: '"Spicy, saucy, and absolutely iconic."',
-      image: '/chilli%20paneer%20pizza.jpg',
-      color: 'bg-accent-red',
+      name: 'Cheese Onion Tomato Sandwich',
+      story: 'The holy trinity of fresh veggies and creamy cheese in every single bite.',
+      speech: '"Simple, fresh, and absolutely perfect."',
+      image: '/featuredSection/cheese%20onion%20tomato%20sandwich.jpg',
+      color: 'bg-accent-green',
       rotate: 2
     },
     {
       id: 3,
-      name: 'The Grill Master',
-      story: 'Perfectly toasted with our secret herb butter and fresh veggies.',
-      speech: '"I\'ve got those perfect grill marks!"',
-      image: '/grill%20sandwich.jpg',
+      name: 'Veg Cheese Toast',
+      story: 'Crunchy golden toast topped with a medley of veggies and bubbling cheese.',
+      speech: '"I\'m your go-to for a quick fix!"',
+      image: '/featuredSection/veg%20cheese%20toast.jpg',
       color: 'bg-primary-orange',
       rotate: -2
     },
     {
       id: 4,
-      name: 'The Open Secret',
-      story: 'Loaded with premium cheese and toppings, served wide open for maximum flavor.',
-      speech: '"Too much cheese? No such thing."',
-      image: '/open%20cheese%20toast.jpg',
-      color: 'bg-accent-green',
+      name: 'Veg Sandwich',
+      story: 'Fresh, stacked, and packed with garden goodness. The classic done right.',
+      speech: '"A fresh story in every layer."',
+      image: '/featuredSection/veg%20sandwich.jpg',
+      color: 'bg-accent-red',
       rotate: 3
     }
   ]
