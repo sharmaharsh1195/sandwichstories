@@ -18,7 +18,7 @@ export default function StoryTimeline() {
       description: 'It all started 18 years ago in Surat. A small cafe, big dreams, and one simple mission: make the perfect sandwich that tells a story.',
       location: 'Surat, Gujarat',
       icon: <FaStore className="text-4xl" />,
-      image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80',
+      image: '/Our%20First%20Kitchen!surat-1st.jpeg',
       color: 'bg-primary-yellow',
       emoji: '🏪',
       rotation: -3
@@ -30,7 +30,7 @@ export default function StoryTimeline() {
       description: 'Two years ago, we took our stories to Pune! New city, same love for fresh ingredients and happy customers. The response was overwhelming!',
       location: 'Pune, Maharashtra',
       icon: <FaRocket className="text-4xl" />,
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80',
+      image: '/pune%20location.jpg',
       color: 'bg-accent-green',
       emoji: '🎯',
       rotation: 2
@@ -42,7 +42,7 @@ export default function StoryTimeline() {
       description: 'We returned home! A second location in Surat because one wasn\'t enough. Our hometown deserved more sandwich stories.',
       location: 'Surat (New Branch), Gujarat',
       icon: <FaMapMarkerAlt className="text-4xl" />,
-      image: 'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=600&q=80',
+      image: '/location-surat.jpeg',
       color: 'bg-primary-orange',
       emoji: '⭐',
       rotation: -2
@@ -54,7 +54,7 @@ export default function StoryTimeline() {
       description: 'Today, we serve thousands of happy customers across 3 locations. But this is just the beginning. More chapters coming soon!',
       location: 'Multiple Cities',
       icon: <span className="text-5xl">🎉</span>,
-      image: 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80',
+      image: '/location-surat.jpeg',
       color: 'bg-accent-red',
       emoji: '🎊',
       rotation: 3

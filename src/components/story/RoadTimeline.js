@@ -11,7 +11,7 @@ export default function RoadTimeline() {
       title: 'Our First Kitchen! 🍳',
       note: 'Just a small room, a griller, and a dream. Mom’s secret chutney recipe was the star!',
       location: 'Surat, Gujarat',
-      image: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80',
+      image: '/surat-1st.png',
       rotation: -3,
       sticker: '🥪',
       color: 'bg-yellow-100'
@@ -22,7 +22,7 @@ export default function RoadTimeline() {
       title: 'Hello Pune! 🌆',
       note: 'New city, new vibes! We were so nervous, but Pune showed us so much love. Best bun maska in town?',
       location: 'Pune, Maharashtra',
-      image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80',
+      image: '/pune-location.webp',
       rotation: 2,
       sticker: '🎉',
       color: 'bg-green-100'
@@ -33,7 +33,7 @@ export default function RoadTimeline() {
       title: 'Home Sweet Home 🏡',
       note: 'Opened our second cafe in Surat. The line went around the block! Best feeling ever.',
       location: 'Surat (Branch 2)',
-      image: 'https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800&q=80',
+      image: '/location-surat.jpeg',
       rotation: -1,
       sticker: '❤️',
       color: 'bg-orange-100'
@@ -117,17 +117,16 @@ function ScrapbookItem({ milestone, index, isLeft }) {
             {/* Tape */}
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-yellow-200/80 rotate-2 shadow-sm z-10"></div>
             
-            {/* Image */}
-            <div className="h-64 md:h-80 w-[300px] md:w-[400px] overflow-hidden bg-gray-100 filter sepia-[0.3] group-hover:sepia-0 transition-all duration-500">
+            <div className="h-64 md:h-80 w-[300px] md:w-[400px] overflow-hidden bg-white filter flex items-center justify-center sepia-[0.3] group-hover:sepia-0 transition-all duration-500">
               <img 
                 src={milestone.image} 
                 alt={milestone.title} 
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain"
               />
             </div>
 
             {/* Handwritten Caption on Polaroid */}
-            <div className="absolute bottom-4 left-0 right-0 text-center font-handwriting text-gray-700 text-xl">
+            <div className="absolute bottom-4 left-0 right-0 text-center font-handwriting text-gray-700 text-xl font-bold px-2 whitespace-nowrap overflow-hidden text-ellipsis">
               {milestone.location} • {milestone.year}
             </div>
 

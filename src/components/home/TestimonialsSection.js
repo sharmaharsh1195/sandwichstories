@@ -11,43 +11,35 @@ export default function TestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      name: 'Priya Sharma',
-      review: 'Best sandwiches in Mumbai! The Paneer Tikka is my go-to. Fresh ingredients, amazing taste!',
+      name: 'Shailesh Patel',
+      review: 'Amazing experience! The sandwiches were fresh, flavorful, and well-crafted — especially the Melting cheese grill and French Fries .The staff were friendly and attentive, and the cafe had a comfortable vibe perfect for hanging out. Definitely coming back again!',
       rating: 5,
-      location: 'Andheri, Mumbai',
+      location: 'Surat',
       color: 'bg-yellow-100'
     },
     {
       id: 2,
-      name: 'Rahul Verma',
-      review: 'The Club Sandwich here is LEGENDARY. Been coming here for 2 years, never disappointed!',
+      name: 'Pushpraj Jadhav',
+      review: 'Love the vibe at Sandwich Stories Cafe. Super friendly staff and the service is always fast. A diverse selection of food is available at affordable prices. High hygiene standards are consistently maintained. Must visit place for the sandwich lovers.',
       rating: 5,
-      location: 'Bandra, Mumbai',
+      location: 'Surat',
       color: 'bg-green-100'
     },
     {
       id: 3,
-      name: 'Sneha Patel',
-      review: 'Love the vibe and food! Bombay Masala Grilled is spicy perfection. Highly recommend! 🔥',
+      name: 'Harshada Pande',
+      review: 'We have been loyal customers of Sandwich Stories since day one, and we absolutely love it! The food quality is excellent, and the taste of the sandwiches is simply irresistible.❤️ The Cheese Chilli Toast is a must-try🤩 it’s my personal favorite! Highly recommend this place for its delicious food and pleasant ambiance—a perfect spot to hang out.👍🏻🫶🏻',
       rating: 5,
-      location: 'Powai, Mumbai',
+      location: 'Pune',
       color: 'bg-orange-100'
     },
     {
       id: 4,
-      name: 'Arjun Mehta',
-      review: 'Quick service, great taste, pocket-friendly. What more can you ask? My office lunch spot!',
+      name: 'Aamir Khan',
+      review: 'Yesterday, I tried the chili cheese sandwich and masala Maggie, and both were fantastic! The flavors were perfectly balanced, and the sandwich had just the right amount of spice. I highly recommend them!',
       rating: 5,
-      location: 'Lower Parel, Mumbai',
+      location: 'Pune',
       color: 'bg-blue-100'
-    },
-    {
-      id: 5,
-      name: 'Kavya Iyer',
-      review: 'Finally, a place that makes REAL good sandwiches. The chicken burger is juicy and delicious!',
-      rating: 5,
-      location: 'Thane, Mumbai',
-      color: 'bg-pink-100'
     }
   ]
 
@@ -99,7 +91,7 @@ export default function TestimonialsSection() {
             className="pb-12"
           >
             {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={testimonial.id}>
+              <SwiperSlide key={testimonial.id} className="!h-auto">
                 <TestimonialCard testimonial={testimonial} index={index} />
               </SwiperSlide>
             ))}
@@ -128,7 +120,7 @@ function TestimonialCard({ testimonial, index }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       viewport={{ once: true }}
       whileHover={{ rotate: 2, scale: 1.05 }}
-      className="h-full"
+      className="h-full w-full flex flex-col"
     >
       {/* Polaroid-style Card */}
       <div className={`${testimonial.color} p-6 rounded-2xl shadow-xl border-4 border-white relative h-full flex flex-col`}>
