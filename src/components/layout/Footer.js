@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="space-y-3 font-body">
               <li className="flex items-center gap-2">
                 <FaPhone className="text-primary-yellow" />
-                <span>+91 98765 43210</span>
+                <span>+91 8200948607</span>
               </li>
               <li className="flex items-start gap-2">
                 <FaMapMarkerAlt className="text-primary-yellow mt-1 flex-shrink-0" />
