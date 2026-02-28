@@ -232,52 +232,49 @@ const css = `
 
   .kw {
     /* ── Chalkboard palette ── */
-    --chalk-bg:      #1e2528;      /* dark slate board */
-    --chalk-left:    #181e21;      /* slightly darker for left rail */
-    --chalk-card:    #252d31;      /* card / row surface  */
-    --chalk-card2:   #2c353a;      /* bestseller row */
+    --chalk-bg:      #1e2528;
+    --chalk-left:    #181e21;
+    --chalk-card:    #252d31;
+    --chalk-card2:   #2c353a;
     --chalk-border:  rgba(255,255,255,0.07);
     --chalk-border2: rgba(255,255,255,0.13);
 
-    --yellow:        #f5c842;      /* primary chalk accent  */
+    --yellow:        #f5c842;
     --yellow-dim:    rgba(245,200,66,0.12);
     --yellow-faint:  rgba(245,200,66,0.06);
-    --orange:        #f07b2b;      /* spicy / secondary */
+    --orange:        #f07b2b;
     --orange-dim:    rgba(240,123,43,0.15);
 
-    --chalk-white:   #f0ece4;      /* main text — slightly warm white */
-    --chalk-mid:     #b0aa9e;      /* secondary text */
-    --chalk-soft:    #7a7570;      /* muted text */
+    --chalk-white:   #f0ece4;
+    --chalk-mid:     #b0aa9e;
+    --chalk-soft:    #7a7570;
     --chalk-xs:      rgba(240,236,228,0.35);
 
-    --green:         #4caf7d;      /* veg indicator */
+    --green:         #4caf7d;
     --green-dim:     rgba(76,175,125,0.18);
 
-    --header-h:      62px;
-    --nav-h:         66px;
-    --left-w:        82px;
+    --header-h:      56px;
+    --nav-h:         60px;
+    --left-w:        80px;
 
     font-family: 'Nunito', sans-serif;
     background: var(--chalk-bg);
     color: var(--chalk-white);
 
-    /* ── Adjust constrained layout ── */
-    height: calc(100vh - 128px);
+    /*
+     * Flexbox column: Header → Body → BottomNav
+     * On desktop the parent page has its own header, so we fill remaining space.
+     * On mobile (QR code use-case) the page hides the site header, so we use 100dvh.
+     */
     display: flex;
     flex-direction: column;
-    position: relative;
-    overflow: hidden;
     width: 100%;
-    margin: 0;
+    height: 100%;              /* fills whatever the parent gives it */
+    overflow: hidden;
+    position: relative;
 
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
-  }
-
-  @media (max-width: 768px) {
-    .kw {
-      height: calc(100vh - 110px);
-    }
   }
 
   /* ═══════════════════════════════════
@@ -340,17 +337,18 @@ const css = `
   }
 
   /* ═══════════════════════════════════
-     BOTTOM NAV
+     BOTTOM NAV — flex child, never overlaps content
   ═══════════════════════════════════ */
   .kw-nav {
-    position: absolute; /* relative to .kw */
-    bottom: 0; left: 0; right: 0; z-index: 60;
+    flex-shrink: 0;
     height: var(--nav-h);
     background: var(--chalk-left);
     border-top: 1px solid var(--chalk-border2);
     display: flex; align-items: center;
     justify-content: space-around;
-    padding: 0 4px env(safe-area-inset-bottom);
+    padding: 0 4px;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    z-index: 60;
   }
 
   .kw-nav-btn {
@@ -391,12 +389,13 @@ const css = `
   .kw-nav-btn.active .kw-nav-pip { opacity: 1; }
 
   /* ═══════════════════════════════════
-     BODY — split layout
+     BODY — split layout, fills between header & nav
   ═══════════════════════════════════ */
   .kw-body {
     flex: 1;
-    display: flex; overflow: hidden;
-    position: relative;
+    min-height: 0;           /* critical: allows flex child to shrink & scroll */
+    display: flex;
+    overflow: hidden;
   }
 
   /* ═══════════════════════════════════
@@ -445,9 +444,10 @@ const css = `
   .kw-right {
     flex: 1;
     overflow-y: auto; scrollbar-width: none;
-    padding: 6px 0 calc(var(--nav-h) + 20px);
+    padding: 6px 0 16px;     /* no nav-height hack needed — nav is a sibling now */
     overscroll-behavior: contain;
     background: var(--chalk-bg);
+    -webkit-overflow-scrolling: touch;   /* smooth momentum scroll on iOS */
   }
   .kw-right::-webkit-scrollbar { display: none; }
 
@@ -580,6 +580,47 @@ const css = `
     white-space: nowrap; letter-spacing: 0.2px;
   }
   .kw-item.best .kw-price { color: var(--yellow); }
+
+  /* ═══════════════════════════════════
+     MOBILE REFINEMENTS
+  ═══════════════════════════════════ */
+
+  /* Small phones (≤ 400px) — tighter left rail */
+  @media (max-width: 400px) {
+    .kw {
+      --left-w: 68px;
+      --header-h: 50px;
+      --nav-h: 56px;
+    }
+    .kw-rail-icon { font-size: 17px; }
+    .kw-rail-lbl { font-size: 9px; }
+    .kw-rail-btn { padding: 10px 3px; gap: 3px; }
+    .kw-item { padding: 11px 12px; }
+    .kw-item-name { font-size: 13px; }
+    .kw-price { font-size: 16px; }
+    .kw-group-title { font-size: 16px; }
+  }
+
+  /* Standard mobile (≤ 768px) */
+  @media (max-width: 768px) {
+    .kw {
+      --left-w: 74px;
+      --header-h: 52px;
+      --nav-h: 58px;
+    }
+    .kw-logo { width: 32px; height: 32px; font-size: 16px; }
+    .kw-name { font-size: 19px; }
+    .kw-tagline { font-size: 9.5px; }
+    .kw-nav-icon { font-size: 20px; }
+    .kw-nav-lbl { font-size: 9px; }
+  }
+
+  /* When used as full-screen QR menu (parent sets height: 100dvh) */
+  @supports (height: 100dvh) {
+    .kw-fullscreen {
+      height: 100dvh;
+    }
+  }
 `
 
 // ─────────────────────────────────────────────────────────────
