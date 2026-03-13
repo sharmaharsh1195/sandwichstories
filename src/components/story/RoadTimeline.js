@@ -20,9 +20,9 @@ export default function RoadTimeline() {
       id: 2,
       year: '2024',
       title: 'Hello Pune! 🌆',
-      note: 'New city, new vibes! We were so nervous, but Pune showed us so much love. Best bun maska in town?',
+      note: 'New city, new vibes! We were so nervous, but Pune showed us so much love. Best sandwich  in town?',
       location: 'Pune, Maharashtra',
-      image: '/pune-location.webp',
+      image: '/pune-location.jpeg',
       rotation: 2,
       sticker: '🎉',
       color: 'bg-green-100'

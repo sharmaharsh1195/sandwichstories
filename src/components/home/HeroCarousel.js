@@ -21,10 +21,10 @@ const slides = [
   {
     id: 2,
     tag: 'Spice it Up 🌶️',
-    title: 'Chilli Paneer Pizza',
+    title: 'Tandoori Paneer Pizza',
     subtitle: 'Fusion at its finest. Desi goodness on a crust.',
     cta: 'Try It Today',
-    image: '/chilli%20paneer%20pizza.jpg',
+    image: '/Tandoori%20Paneer%20Pizza.jpg',
     bg: 'from-red-500 to-orange-400',
     accent: '#ef4444',
     particles: ['🌶️', '🍕', '🔥'],
@@ -51,16 +51,31 @@ const slides = [
   {
     id: 4,
     tag: 'Cheese Lover\'s Pick 🧀',
-    title: 'The Open Secret',
+    title: 'Veg Cheese Burger',
     subtitle: 'Loaded with premium cheese. No secrets here.',
     cta: 'Get Cheesy',
-    image: '/open%20cheese%20toast.jpg',
+    image: '/Veg%20Cheese%20Burger.jpg',
     bg: 'from-yellow-500 to-amber-400',
     accent: '#eab308',
     particles: ['🧀', '😋', '💛'],
     doodles: [
       { text: 'Premium Cheese', x: '70%', y: '15%', rotate: 10 },
       { text: 'Golden Crunch', x: '15%', y: '75%', rotate: -12 },
+    ]
+  },
+  {
+    id: 5,
+    tag: 'Sizzling Side 🍟',
+    title: 'Peri Peri French Fries',
+    subtitle: 'Crispy, spicy, and perfectly seasoned.',
+    cta: 'Snack Now',
+    image: '/Peri%20Peri%20French%20Fries.jpg',
+    bg: 'from-orange-600 to-red-500',
+    accent: '#ea580c',
+    particles: ['🍟', '🌶️', '✨'],
+    doodles: [
+      { text: 'Spicy peri-peri', x: '75%', y: '20%', rotate: 15 },
+      { text: 'Extra Crispy', x: '10%', y: '75%', rotate: -10 },
     ]
   },
 ]

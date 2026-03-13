@@ -16,10 +16,10 @@ export default function FeaturedSection() {
     },
     {
       id: 2,
-      name: 'Cheese Onion Tomato Sandwich',
-      story: 'The holy trinity of fresh veggies and creamy cheese in every single bite.',
-      speech: '"Simple, fresh, and absolutely perfect."',
-      image: '/featuredSection/cheese%20onion%20tomato%20sandwich.jpg',
+      name: 'Veg Cheese Grill Sandwich',
+      story: 'Triple-decker delight with secret spices, grilled to perfection with melting cheese.',
+      speech: '"I am a classic for a reason!"',
+      image: '/featuredSection/cheese grill sandwich.jpg',
       color: 'bg-accent-green',
       rotate: 2
     },
@@ -38,7 +38,7 @@ export default function FeaturedSection() {
       story: 'Fresh, stacked, and packed with garden goodness. The classic done right.',
       speech: '"A fresh story in every layer."',
       image: '/featuredSection/veg%20sandwich.jpg',
-      color: 'bg-accent-red',
+      color: 'bg-emerald-500',
       rotate: 3
     }
   ]

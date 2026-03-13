@@ -1,4 +1,4 @@
-import { FaInstagram, FaFacebook, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
+import { FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
 
 export default function Footer() {
   return (
@@ -39,11 +39,13 @@ export default function Footer() {
               </li>
             </ul>
             <div className="flex gap-4 mt-4">
-              <a href="#" className="text-2xl hover:text-primary-yellow transition-colors">
+              <a 
+                href="https://www.instagram.com/sandwich.storiess?igsh=dXAyemo3ajRlcHNr" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-2xl hover:text-primary-yellow transition-colors"
+              >
                 <FaInstagram />
-              </a>
-              <a href="#" className="text-2xl hover:text-primary-yellow transition-colors">
-                <FaFacebook />
               </a>
             </div>
           </div>

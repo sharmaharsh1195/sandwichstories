@@ -8,7 +8,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const mainCategories = [
   { id: 'sandwiches', label: 'Sandwiches', icon: '🥪' },
-  { id: 'fastfood',   label: 'Fast Food',  icon: '🍔' },
+  { id: 'pizza',      label: 'Pizza',      icon: '🍕' },
+  { id: 'fries',      label: 'Fries',      icon: '🍟' },
+  { id: 'burger',     label: 'Burger',     icon: '🍔' },
+  { id: 'maggi',      label: 'Maggi',      icon: '🍜' },
+  { id: 'nuggets',    label: 'Nuggets',    icon: '🧆' },
+  { id: 'garlicb',    label: 'Garlic Bread', icon: '🥖' },
   { id: 'beverages',  label: 'Beverages',  icon: '☕' },
   { id: 'extras',     label: 'Extras',     icon: '✦'  },
 ]
@@ -80,7 +85,7 @@ const categoryGroups = {
       ],
     },
   ],
-  fastfood: [
+  pizza: [
     {
       group: 'Pizza',
       note: 'Small / Large',
@@ -94,6 +99,8 @@ const categoryGroups = {
         { id: 607, n: 'Tandoori Paneer', p: '₹200 / ₹240', b: true },
       ],
     },
+  ],
+  fries: [
     {
       group: 'Fries',
       items: [
@@ -104,6 +111,8 @@ const categoryGroups = {
         { id: 705, n: 'Chipotle Cheese Fries',  p: '₹150' },
       ],
     },
+  ],
+  burger: [
     {
       group: 'Burger',
       note: 'Single / Double Patty',
@@ -118,6 +127,8 @@ const categoryGroups = {
         { id: 808, n: 'Paneer Tandoori Cheese Burger', p: '₹180'        },
       ],
     },
+  ],
+  maggi: [
     {
       group: 'Maggi',
       items: [
@@ -129,6 +140,8 @@ const categoryGroups = {
         { id: 906, n: 'Schezwan Maggi',         p: '₹100', h: true },
       ],
     },
+  ],
+  nuggets: [
     {
       group: 'Nuggets',
       items: [
@@ -142,6 +155,8 @@ const categoryGroups = {
         { id: 1008, n: 'Crispy Pizza Finger',        p: '₹180' },
       ],
     },
+  ],
+  garlicb: [
     {
       group: 'Garlic Bread',
       items: [
@@ -345,17 +360,21 @@ const css = `
     background: var(--chalk-left);
     border-top: 1px solid var(--chalk-border2);
     display: flex; align-items: center;
-    justify-content: space-around;
-    padding: 0 4px;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0 12px;
+    gap: 12px;
     padding-bottom: env(safe-area-inset-bottom, 0px);
     z-index: 60;
   }
+  .kw-nav::-webkit-scrollbar { display: none; }
 
   .kw-nav-btn {
-    flex: 1; max-width: 82px;
+    flex-shrink: 0;
     display: flex; flex-direction: column;
     align-items: center; gap: 3px;
-    padding: 7px 6px 4px;
+    padding: 7px 12px 4px;
     border: none; background: transparent; cursor: pointer;
     border-radius: 12px;
     transition: background 0.15s;
@@ -701,7 +720,7 @@ export default function KitchenWallMenu() {
           <div className="kw-brand">
             <div className="kw-logo">🍽️</div>
             <div>
-              <div className="kw-name">Kitchen <b>Wall</b></div>
+              <div className="kw-name">Menu</div>
               <div className="kw-tagline">Fresh · Made with love</div>
             </div>
           </div>
