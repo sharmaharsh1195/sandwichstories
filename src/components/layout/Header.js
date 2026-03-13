@@ -9,6 +9,7 @@ import { SiZomato, SiSwiggy } from 'react-icons/si' // 👈 new
 
 const ZOMATO_LINK = 'https://link.zomato.com/xqzv/rshare?id=13119965730563f3b'
 const SWIGGY_LINK = 'https://www.swiggy.com/direct/brand/177058?source=swiggy-direct&subSource=generic'
+const GOOGLE_MAPS_LINK = 'https://maps.app.goo.gl/dyeJYNQ6RQPyYqDq6'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,7 +25,7 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'Menu', href: '/menu' },
     { name: 'Our Story', href: '/our-story' },
-    { name: 'Locations', href: '/locations' },
+    { name: 'Locations', href: GOOGLE_MAPS_LINK },
   ]
 
   return (
@@ -65,6 +66,8 @@ export default function Header() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
+                    target={link.href.startsWith('http') ? '_blank' : undefined}
+                    rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                     className="relative px-5 py-2 font-body font-bold text-gray-800 hover:text-orange-600 transition-colors duration-300 group overflow-hidden rounded-full"
                   >
                     <span className="relative z-10">{link.name}</span>
@@ -192,6 +195,8 @@ export default function Header() {
                   >
                     <Link
                       href={link.href}
+                      target={link.href.startsWith('http') ? '_blank' : undefined}
+                      rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="block px-4 py-3 rounded-xl font-heading font-bold text-xl text-gray-800 hover:text-orange-600 hover:bg-orange-50 transition-all"
                       onClick={() => setIsOpen(false)}
                     >
