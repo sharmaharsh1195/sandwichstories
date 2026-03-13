@@ -8,7 +8,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const mainCategories = [
   { id: 'sandwiches', label: 'Sandwiches', icon: '🥪' },
-  { id: 'fastfood',   label: 'Fast Food',  icon: '🍔' },
+  { id: 'pizza',      label: 'Pizza',      icon: '🍕' },
+  { id: 'burger',     label: 'Burger',     icon: '🍔' },
+  { id: 'fries',      label: 'Fries',      icon: '🍟' },
+  { id: 'maggi',      label: 'Maggi',      icon: '🍜' },
+  { id: 'nuggets',    label: 'Nuggets',    icon: '🧆' },
+  { id: 'garlicb',    label: 'Garlic Bread', icon: '🥖' },
   { id: 'beverages',  label: 'Beverages',  icon: '☕' },
   { id: 'extras',     label: 'Extras',     icon: '✦'  },
 ]
@@ -80,7 +85,7 @@ const categoryGroups = {
       ],
     },
   ],
-  fastfood: [
+  pizza: [
     {
       group: 'Pizza',
       note: 'Small / Large',
@@ -94,6 +99,8 @@ const categoryGroups = {
         { id: 607, n: 'Tandoori Paneer', p: '₹200 / ₹240', b: true },
       ],
     },
+  ],
+  fries: [
     {
       group: 'Fries',
       items: [
@@ -104,6 +111,8 @@ const categoryGroups = {
         { id: 705, n: 'Chipotle Cheese Fries',  p: '₹150' },
       ],
     },
+  ],
+  burger: [
     {
       group: 'Burger',
       note: 'Single / Double Patty',
@@ -118,6 +127,8 @@ const categoryGroups = {
         { id: 808, n: 'Paneer Tandoori Cheese Burger', p: '₹180'        },
       ],
     },
+  ],
+  maggi: [
     {
       group: 'Maggi',
       items: [
@@ -130,6 +141,8 @@ const categoryGroups = {
         { id: 906, n: 'Schezwan Maggi',         p: '₹100', h: true },
       ],
     },
+  ],
+  nuggets: [
     {
       group: 'Nuggets',
       items: [
@@ -143,6 +156,8 @@ const categoryGroups = {
         { id: 1008, n: 'Crispy Pizza Finger',        p: '₹180' },
       ],
     },
+  ],
+  garlicb: [
     {
       group: 'Garlic Bread',
       items: [
