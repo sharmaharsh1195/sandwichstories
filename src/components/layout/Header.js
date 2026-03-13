@@ -102,7 +102,6 @@ export default function Header() {
                       href={ZOMATO_LINK}
                       rel="noopener noreferrer" 
                       target="_blank"
-                      rel="noopener noreferrer"
                       className="group/z relative flex items-center gap-2 bg-[#CB202D] text-white pl-5 pr-4 py-2.5
                         hover:bg-[#b01c27]
                         hover:-translate-y-0.5

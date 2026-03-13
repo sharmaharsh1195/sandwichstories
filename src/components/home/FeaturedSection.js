@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function FeaturedSection() {
   const items = [
@@ -80,6 +81,7 @@ export default function FeaturedSection() {
 }
 
 function StoryCard({ item, index }) {
+  const router = useRouter()
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-50px" })
 
@@ -107,7 +109,8 @@ function StoryCard({ item, index }) {
         scale: 1.05,
         transition: { duration: 0.3 }
       }}
-      className={`relative ${index % 2 === 0 ? 'md:mt-0' : 'md:mt-12'}`}
+      className={`relative cursor-pointer ${index % 2 === 0 ? 'md:mt-0' : 'md:mt-12'}`}
+      onClick={() => router.push('/menu')}
     >
       {/* Main Card */}
       <div className="relative bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-dark group">
