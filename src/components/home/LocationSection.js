@@ -7,10 +7,10 @@ export default function LocationSection() {
     {
       id: 1,
       name: 'Godadara, Surat',
-      address: 'SANDWICH SSTORIES, G8, SKY ELANZA, OPP. SKY VIEW HEIGHTS, BEHIND MIDAS SQUARE, GODADARA RD, SURAT, GUJARAT 395012',
+      address: 'SANDWICH STORIES, G8, SKY ELANZA, OPP. SKY VIEW HEIGHTS, BEHIND MIDAS SQUARE, GODADARA RD, SURAT, GUJARAT 395012',
       hours: '11:00 AM - 11:00 PM',
       phone: '+91 9033160966',
-      mapUrl: '#',
+      mapUrl: 'https://maps.app.goo.gl/dyeJYNQ6RQPyYqDq6',
       image: '/location-surat.jpeg',
       color: 'bg-primary-yellow',
       emoji: '🏪'
@@ -21,7 +21,7 @@ export default function LocationSection() {
       address: 'J.K.NAGAR, VESU CANAL RD, NEAR SAI BABA MANDIR, OPPOSITE PARVAT PATIA BRTS, PARVAT PATIYA, SURAT, GUJARAT 395010',
       hours: '06:00 PM - 11:00 PM',
       phone: '+91 9974993710',
-      mapUrl: '#',
+      mapUrl: 'https://maps.app.goo.gl/RR6TQ4f5nHxXGV1b7',
       image: '/location-surat.jpeg',
       color: 'bg-accent-green',
       emoji: '🎯'
@@ -156,15 +156,16 @@ function LocationCard({ location, index }) {
             </a>
           </div>
 
-          {/* CTA Button */}
-          <button 
-            type="button" 
-            onClick={(e) => e.preventDefault()} 
+          {/* Get Directions Link */}
+          <a 
+            href={location.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className={`w-full ${location.color} hover:bg-dark hover:text-white text-dark font-heading font-bold py-3 rounded-xl transition-all duration-300 transform group-hover:scale-105 shadow-md flex items-center justify-center gap-2 mt-4`}
           >
             <FaDirections />
             Get Directions
-          </button>
+          </a>
         </div>
       </div>
     </motion.div>

@@ -146,9 +146,9 @@ function StoryCard({ item, index }) {
           </p>
 
           {/* CTA Button */}
-          <button className="w-full bg-dark hover:bg-brown text-white font-heading font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+          {/* <button className="w-full bg-dark hover:bg-brown text-white font-heading font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
             Read Full Story →
-          </button>
+          </button> */}
         </div>
 
         {/* Decorative Corner Stamp */}

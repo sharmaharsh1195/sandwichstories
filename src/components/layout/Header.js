@@ -25,7 +25,7 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'Menu', href: '/menu' },
     { name: 'Our Story', href: '/our-story' },
-    { name: 'Locations', href: GOOGLE_MAPS_LINK },
+    { name: 'Locations', href: '/locations' },
   ]
 
   return (
@@ -43,22 +43,32 @@ export default function Header() {
                 : 'bg-white/40 backdrop-blur-sm py-4'
               }`}
           >
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 relative group">
-              <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105 rounded-full overflow-hidden bg-white shadow-sm p-1">
-                <Image
-                  src="/Sandwitch logo-1.png"
-                  alt="Sandwich Stories Logo"
-                  fill
-                  className="object-cover rounded-full"
-                  priority
-                />
-              </div>
-              <span className={`font-heading font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 drop-shadow-sm transition-all duration-300
-                ${scrolled ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'}`}>
-                Sandwich Stories
-              </span>
-            </Link>
+          {/* Logo */}
+<Link href="/" className="flex items-center gap-3 relative group">
+  <div className="relative w-12 h-12 md:w-16 md:h-16 transition-transform duration-300 group-hover:scale-105 rounded-full overflow-hidden bg-white shadow-sm p-1">
+    <Image
+      src="/Sandwitch logo-1.png"
+      alt="Sandwich Stories Logo"
+      fill
+      className="object-cover rounded-full"
+      priority
+    />
+  </div>
+
+  {/* ✨ Wrap in flex-col to stack name + tagline */}
+  <div className="flex flex-col leading-tight items-end">
+  <span className={`font-heading font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500 drop-shadow-sm transition-all duration-300
+    ${scrolled ? 'text-xl md:text-2xl' : 'text-2xl md:text-3xl'}`}>
+    Sandwich Stories
+  </span>
+  <span className={`font-heading font-medium text-black tracking-widest transition-all duration-300
+    ${scrolled ? 'text-[9px] md:text-[10px]' : 'text-[10px] md:text-xs'}`}>
+    Since 2008
+  </span>
+</div>
+
+</Link>
+
 
             {/* Desktop Navigation */}
             <ul className="hidden md:flex items-center space-x-2">

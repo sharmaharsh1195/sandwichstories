@@ -1,4 +1,8 @@
 import { FaInstagram, FaPhone, FaMapMarkerAlt } from 'react-icons/fa'
+import { SiZomato, SiSwiggy } from 'react-icons/si'
+
+const ZOMATO_LINK = 'https://link.zomato.com/xqzv/rshare?id=13119965730563f3b'
+const SWIGGY_LINK = 'https://www.swiggy.com/direct/brand/177058?source=swiggy-direct&subSource=generic'
 
 export default function Footer() {
   return (
@@ -35,17 +39,36 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2">
                 <FaMapMarkerAlt className="text-primary-yellow mt-1 flex-shrink-0" />
-                <span className="text-sm">SANDWICH SSTORIES, G8, SKY ELANZA, OPP. SKY VIEW HEIGHTS, BEHIND MIDAS SQUARE, GODADARA RD, SURAT, GUJARAT 395012</span>
+                <span className="text-sm">SANDWICH STORIES, G8, SKY ELANZA, OPP. SKY VIEW HEIGHTS, BEHIND MIDAS SQUARE, GODADARA RD, SURAT, GUJARAT 395012</span>
               </li>
             </ul>
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-4 mt-6">
               <a 
                 href="https://www.instagram.com/sandwich.storiess?igsh=dXAyemo3ajRlcHNr" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-2xl hover:text-primary-yellow transition-colors"
+                className="text-2xl hover:text-primary-yellow transition-all duration-300 hover:scale-110"
+                title="Follow us on Instagram"
               >
                 <FaInstagram />
+              </a>
+              <a 
+                href={ZOMATO_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-2xl hover:text-[#CB202D] transition-all duration-300 hover:scale-110"
+                title="Order on Zomato"
+              >
+                <SiZomato />
+              </a>
+              <a 
+                href={SWIGGY_LINK} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-2xl hover:text-[#FC8019] transition-all duration-300 hover:scale-110"
+                title="Order on Swiggy"
+              >
+                <SiSwiggy />
               </a>
             </div>
           </div>
