@@ -21,7 +21,7 @@ const permanentMarker = Permanent_Marker({
 
 export const metadata = {
   title: 'Sandwich Stories - Delicious Sandwiches & Burgers',
-  description: 'Mumbai\'s favorite sandwich spot! Fresh, tasty sandwiches, burgers and more.',
+  description: 'Surat \'s favorite sandwich spot! Fresh, tasty sandwiches, burgers and more.',
 }
 
 export default function RootLayout({ children }) {

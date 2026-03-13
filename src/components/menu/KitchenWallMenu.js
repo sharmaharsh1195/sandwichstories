@@ -8,12 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 const mainCategories = [
   { id: 'sandwiches', label: 'Sandwiches', icon: '🥪' },
-  { id: 'pizza',      label: 'Pizza',      icon: '🍕' },
-  { id: 'fries',      label: 'Fries',      icon: '🍟' },
-  { id: 'burger',     label: 'Burger',     icon: '🍔' },
-  { id: 'maggi',      label: 'Maggi',      icon: '🍜' },
-  { id: 'nuggets',    label: 'Nuggets',    icon: '🧆' },
-  { id: 'garlicb',    label: 'Garlic Bread', icon: '🥖' },
+  { id: 'fastfood',   label: 'Fast Food',  icon: '🍔' },
   { id: 'beverages',  label: 'Beverages',  icon: '☕' },
   { id: 'extras',     label: 'Extras',     icon: '✦'  },
 ]
@@ -85,7 +80,7 @@ const categoryGroups = {
       ],
     },
   ],
-  pizza: [
+  fastfood: [
     {
       group: 'Pizza',
       note: 'Small / Large',
@@ -99,8 +94,6 @@ const categoryGroups = {
         { id: 607, n: 'Tandoori Paneer', p: '₹200 / ₹240', b: true },
       ],
     },
-  ],
-  fries: [
     {
       group: 'Fries',
       items: [
@@ -111,8 +104,6 @@ const categoryGroups = {
         { id: 705, n: 'Chipotle Cheese Fries',  p: '₹150' },
       ],
     },
-  ],
-  burger: [
     {
       group: 'Burger',
       note: 'Single / Double Patty',
@@ -127,12 +118,11 @@ const categoryGroups = {
         { id: 808, n: 'Paneer Tandoori Cheese Burger', p: '₹180'        },
       ],
     },
-  ],
-  maggi: [
     {
       group: 'Maggi',
       items: [
         { id: 901, n: 'Masala Maggi',           p: '₹60',  b: true },
+        { id: 1001, n: 'Crispy Finger',              p: '₹120' },
         { id: 902, n: 'Veg Masala Maggi',       p: '₹80'  },
         { id: 903, n: 'Veg Cheese Maggi',       p: '₹100', b: true },
         { id: 904, n: 'Peri Peri Maggi',        p: '₹100', h: true },
@@ -140,8 +130,6 @@ const categoryGroups = {
         { id: 906, n: 'Schezwan Maggi',         p: '₹100', h: true },
       ],
     },
-  ],
-  nuggets: [
     {
       group: 'Nuggets',
       items: [
@@ -155,8 +143,6 @@ const categoryGroups = {
         { id: 1008, n: 'Crispy Pizza Finger',        p: '₹180' },
       ],
     },
-  ],
-  garlicb: [
     {
       group: 'Garlic Bread',
       items: [
@@ -732,17 +718,16 @@ export default function KitchenWallMenu() {
         {/* ── SPLIT BODY ── */}
         <div className="kw-body">
 
-          {/* LEFT RAIL */}
+          {/* LEFT RAIL - Main Categories */}
           <aside className="kw-left" ref={leftRef}>
-            {groups.map(({ group }) => (
+            {mainCategories.map((cat) => (
               <button
-                key={group}
-                data-rail={group}
-                className={`kw-rail-btn${activeGroup === group ? ' active' : ''}`}
-                onClick={() => scrollToGroup(group)}
+                key={cat.id}
+                className={`kw-rail-btn${activeCat === cat.id ? ' active' : ''}`}
+                onClick={() => handleCatChange(cat.id)}
               >
-                <span className="kw-rail-icon">{groupIcons[group] || '🍽️'}</span>
-                <span className="kw-rail-lbl">{group}</span>
+                <span className="kw-rail-icon">{cat.icon}</span>
+                <span className="kw-rail-lbl">{cat.label}</span>
               </button>
             ))}
           </aside>
@@ -804,17 +789,17 @@ export default function KitchenWallMenu() {
 
         </div>
 
-        {/* ── BOTTOM NAV ── */}
+        {/* ── BOTTOM NAV - Sub Groups ── */}
         <nav className="kw-nav">
-          {mainCategories.map((cat) => (
+          {groups.map((group) => (
             <button
-              key={cat.id}
-              className={`kw-nav-btn${cat.id === activeCat ? ' active' : ''}`}
-              onClick={() => handleCatChange(cat.id)}
+              key={group.group}
+              className={`kw-nav-btn${group.group === activeGroup ? ' active' : ''}`}
+              onClick={() => scrollToGroup(group.group)}
             >
               <span className="kw-nav-pip" />
-              <span className="kw-nav-icon">{cat.icon}</span>
-              <span className="kw-nav-lbl">{cat.label}</span>
+              <span className="kw-nav-icon">{groupIcons[group.group] || '🍽️'}</span>
+              <span className="kw-nav-lbl">{group.group}</span>
             </button>
           ))}
         </nav>
