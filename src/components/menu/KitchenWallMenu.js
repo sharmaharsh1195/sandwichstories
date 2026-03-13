@@ -1,6 +1,10 @@
+```javascript
 'use client'
 import { useState, useRef, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Link from 'next/link'
+import { FaFire, FaLeaf, FaConciergeBell, FaChevronRight, FaFilter, FaHome } from 'react-icons/fa'
+import { MdOutlineFastfood, MdRestaurantMenu } from 'react-icons/md'
 
 // ─────────────────────────────────────────────────────────────
 //  DATA
@@ -308,17 +312,40 @@ const css = `
     z-index: 20;
   }
 
-  .kw-brand { display: flex; align-items: center; gap: 10px; }
+  .kw-header-left { display: flex; align-items: center; gap: 12px; }
+  
+  .kw-home-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--chalk-white);
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .kw-home-btn:hover {
+    background: rgba(255,255,255,0.15);
+    transform: scale(1.05);
+  }
 
-  .kw-logo {
-    width: 38px; height: 38px;
+  .kw-logo-wrap {
+    width: 48px;
+    height: 48px;
     background: var(--yellow);
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
     font-size: 19px; flex-shrink: 0;
   }
+  .kw-logo-icon {
+    font-size: 24px;
+    color: var(--chalk-bg);
+  }
 
-  .kw-name {
+  .kw-title {
     font-family: 'Caveat', cursive;
     font-size: 22px;
     font-weight: 700;
@@ -326,9 +353,9 @@ const css = `
     letter-spacing: 0.2px;
     line-height: 1.1;
   }
-  .kw-name b { color: var(--yellow); }
+  .kw-title b { color: var(--yellow); }
 
-  .kw-tagline {
+  .kw-subtitle {
     font-size: 10.5px;
     font-weight: 600;
     color: var(--chalk-soft);
@@ -628,9 +655,9 @@ const css = `
       --header-h: 52px;
       --nav-h: 58px;
     }
-    .kw-logo { width: 32px; height: 32px; font-size: 16px; }
-    .kw-name { font-size: 19px; }
-    .kw-tagline { font-size: 9.5px; }
+    .kw-logo-wrap { width: 32px; height: 32px; font-size: 16px; }
+    .kw-title { font-size: 19px; }
+    .kw-subtitle { font-size: 9.5px; }
     .kw-nav-icon { font-size: 20px; }
     .kw-nav-lbl { font-size: 9px; }
   }
@@ -718,11 +745,16 @@ export default function KitchenWallMenu() {
 
         {/* ── HEADER ── */}
         <header className="kw-header">
-          <div className="kw-brand">
-            <div className="kw-logo">🍽️</div>
+          <div className="kw-header-left">
+            <Link href="/" className="kw-home-btn" title="Back to Home">
+              <FaHome size={20} />
+            </Link>
+            <div className="kw-logo-wrap">
+              <MdRestaurantMenu className="kw-logo-icon" />
+            </div>
             <div>
-              <div className="kw-name">Menu</div>
-              <div className="kw-tagline">Fresh · Made with love</div>
+              <h1 className="kw-title">Menu</h1>
+              <p className="kw-subtitle">Fresh · Made with love</p>
             </div>
           </div>
           <div className="kw-veg">
